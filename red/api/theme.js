@@ -128,6 +128,15 @@ module.exports = {
             }
         }
 
+        if (theme.customScripts) {
+            var urls = []
+            for (var i = 0; i < theme.customScripts.length; i++) {
+                var url = serveFile(themeApp,"/scripts/",theme.customScripts[i])
+                urls.push({ url: url });
+            }
+            themeContext.customScripts = urls
+        }
+
         if (theme.deployButton) {
             if (theme.deployButton.type == "simple") {
                 themeSettings.deployButton = {
